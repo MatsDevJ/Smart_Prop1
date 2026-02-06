@@ -13,21 +13,23 @@
 ## Data Models (Firestore Schema Design)
 - **projects:** `id`, `name`, `developer`, `launchDate`, `location`, `district`, `recentTransactions`, `nearbyProjects`, `images`, `tenure`, `medianPsf`, `floorPlanUrl`
 - **partners:** `id`, `type` (Agent, Developer, etc.), `name`, `contactDetails`, `rating`
+- **leads:** `id`, `partnerId`, `projectName`, `customerName`, `customerEmail`, `customerPhone`, `status`, `timestamp`
 - **ads:** `id`, `type`, `content`, `placement`
 
-## Current Plan: Lead Gen Forms
-1.  **Component Creation:**
-    -   Create `<lead-gen-modal>`: A reusable modal form component.
-        -   Attributes: `open` (boolean), `type` (Agent/Mortgage/Interior), `project-name`.
-        -   Fields: Name, Email, Phone, + optional fields based on type.
-        -   Action: Simulate form submission (alert for MVP).
-2.  **Integration (Project Details Page):**
-    -   **Agent Lead Gen:** Convert "Download Floor Plan" button to trigger `<lead-gen-modal type="Agent">`.
-    -   **Mortgage Lead Gen:** Add "Mortgage Estimator" card with a basic input UI (Price, Interest) and a "Get Bank Rates" button triggering `<lead-gen-modal type="Mortgage">`.
-    -   **Interior Design Lead Gen:** Add "Interior Inspiration" card with a "View ID Proposals" button triggering `<lead-gen-modal type="Interior">`.
+## Current Plan: Partner Portal
+1.  **New Page (`partner-portal.html`):**
+    -   A dashboard for partners to view their leads.
+    -   **Login Mockup:** Simple button to "Login as Agent" (bypassing real auth for MVP).
+2.  **Dashboard UI (`partner.js`):**
+    -   **Stats Overview:** Cards showing "Total Leads", "Conversion Rate", "Recent Enquiries".
+    -   **Leads Table:** List of leads generated from the "Project Details" page (mocked data initially).
+    -   **Profile Section:** Simple form to update contact details.
+3.  **Data Update:**
+    -   Create `mockLeads.js` to simulate incoming enquiries from the lead gen forms.
 
 ## Features Implemented
 - [x] Home Page (Hero, Featured List)
 - [x] Project Card Component
 - [x] Project Details Page (Core info, Nearby list)
 - [x] Lead Gen Forms (Agent, Mortgage, Interior modals)
+- [ ] Partner Portal (Dashboard, Leads List)

@@ -88,6 +88,18 @@ function renderProjectDetails(id) {
 
             <!-- Right Column -->
             <div style="display: flex; flex-direction: column; gap: 2rem;">
+                
+                <!-- Price Trend Analysis (New Feature) -->
+                <div class="card p-6" style="background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--color-border);">
+                     <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-primary);">Price Trend Analysis</h2>
+                     <div style="position: relative; height: 250px; width: 100%;">
+                        <canvas id="priceChart"></canvas>
+                     </div>
+                     <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-top: 1rem; text-align: center;">
+                        Historical PSF performance vs District Average
+                     </p>
+                </div>
+
                 <!-- Analysis / Nearby -->
                 <div class="card p-6" style="background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--color-border);">
                      <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-primary);">Competitive Landscape</h2>
@@ -135,5 +147,84 @@ function renderProjectDetails(id) {
         modal.setAttribute('type', 'Interior');
         modal.setAttribute('project-name', project.name);
         modal.setAttribute('open', '');
+    });
+
+    // Initialize Chart
+    if (project.priceHistory) {
+        renderChart(project);
+    }
+}
+
+function renderChart(project) {
+    const ctx = document.getElementById('priceChart');
+    if (!ctx) return;
+
+    const labels = project.priceHistory.map(h => h.year);
+    const dataProject = project.priceHistory.map(h => h.price);
+    // Mock District Average (slightly lower than project for demo)
+    const dataDistrict = project.priceHistory.map(h => h.price - 150);
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: `${project.name} (PSF)`,
+                    data: dataProject,
+                    borderColor: '#0f172a', // Slate 900 (Primary)
+                    backgroundColor: 'rgba(15, 23, 42, 0.1)',
+                    tension: 0.3,
+                    fill: true
+                },
+                {
+                    label: `${project.district} Avg (PSF)`,
+                    data: dataDistrict,
+                    borderColor: '#d4af37', // Gold (Accent)
+                    backgroundColor: 'rgba(212, 175, 55, 0.0)',
+                    borderDash: [5, 5],
+                    tension: 0.3,
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: { family: 'system-ui' }
+                    }
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    callbacks: {
+                        label: function(context) {
+                            return context.dataset.label + ': S$ ' + context.parsed.y;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    grid: { color: '#f1f5f9' },
+                    ticks: {
+                        callback: function(value) { return 'S$ ' + value; }
+                    }
+                },
+                x: {
+                    grid: { display: false }
+                }
+            },
+            interaction: {
+                mode: 'nearest',
+                axis: 'x',
+                intersect: false
+            }
+        }
     });
 }

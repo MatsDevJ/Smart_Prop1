@@ -10,7 +10,13 @@ export const projects = [
     tenure: "99-year Leasehold",
     medianPsf: "S$ 2,450",
     floorPlanUrl: "#",
-    nearbyProjects: ["Grand Dunman", "Tembusu Grand"]
+    nearbyProjects: ["Grand Dunman", "Tembusu Grand"],
+    priceHistory: [
+      { year: '2023', price: 2100 },
+      { year: '2024', price: 2250 },
+      { year: '2025', price: 2380 },
+      { year: '2026', price: 2450 }
+    ]
   },
   {
     id: "p2",
@@ -23,7 +29,13 @@ export const projects = [
     tenure: "99-year Leasehold",
     medianPsf: "S$ 2,200",
     floorPlanUrl: "#",
-    nearbyProjects: ["The Chuan", "Amaranda Gardens"]
+    nearbyProjects: ["The Chuan", "Amaranda Gardens"],
+    priceHistory: [
+      { year: '2023', price: 1900 },
+      { year: '2024', price: 2050 },
+      { year: '2025', price: 2150 },
+      { year: '2026', price: 2200 }
+    ]
   },
   {
     id: "p3",
@@ -36,7 +48,13 @@ export const projects = [
     tenure: "99-year Leasehold",
     medianPsf: "S$ 1,950",
     floorPlanUrl: "#",
-    nearbyProjects: ["Tampines Green", "Parc Central"]
+    nearbyProjects: ["Tampines Green", "Parc Central"],
+    priceHistory: [
+      { year: '2023', price: 1650 },
+      { year: '2024', price: 1780 },
+      { year: '2025', price: 1890 },
+      { year: '2026', price: 1950 }
+    ]
   },
   {
     id: "p4",
@@ -49,7 +67,13 @@ export const projects = [
     tenure: "99-year Leasehold",
     medianPsf: "S$ 3,100",
     floorPlanUrl: "#",
-    nearbyProjects: ["Canninghill Piers", "The Riverine"]
+    nearbyProjects: ["Canninghill Piers", "The Riverine"],
+    priceHistory: [
+      { year: '2023', price: 2800 },
+      { year: '2024', price: 2950 },
+      { year: '2025', price: 3050 },
+      { year: '2026', price: 3100 }
+    ]
   },
   {
     id: "p5",
@@ -62,6 +86,12 @@ export const projects = [
     tenure: "Executive Condo",
     medianPsf: "S$ 1,400",
     floorPlanUrl: "#",
-    nearbyProjects: ["Altura", "Lumina Grand"]
+    nearbyProjects: ["Altura", "Lumina Grand"],
+    priceHistory: [
+      { year: '2023', price: 1250 },
+      { year: '2024', price: 1320 },
+      { year: '2025', price: 1380 },
+      { year: '2026', price: 1400 }
+    ]
   }
 ];

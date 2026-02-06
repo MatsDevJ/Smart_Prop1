@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner Portal | Smart Investor</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Portal Specific Styles */
+        .sidebar {
+            width: 250px;
+            background-color: white;
+            border-right: 1px solid var(--color-border);
+            height: calc(100vh - 73px); /* Minus header height */
+            position: fixed;
+            top: 73px;
+            left: 0;
+            padding: var(--spacing-lg);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease-in-out;
+            z-index: 200;
+        }
+        
+        .main-content {
+            margin-left: 250px;
+            padding: var(--spacing-xl);
+            width: calc(100% - 250px);
+            transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+        }
+
+        .nav-item {
+            display: block;
+            padding: var(--spacing-sm) var(--spacing-md);
+            color: var(--color-text-muted);
+            text-decoration: none;
+            border-radius: 4px;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: var(--color-background);
+            color: var(--color-primary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .stat-card {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-top: var(--spacing-xs);
+        }
+
+        .stat-label {
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Table Styles */
+        .table-container {
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            overflow: hidden;
+            overflow-x: auto; /* Allow horizontal scroll on mobile */
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px; /* Force scroll on small screens */
+        }
+
+        th, td {
+            padding: var(--spacing-md);
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        th {
+            background-color: var(--color-background);
+            font-weight: 600;
+            color: var(--color-secondary);
+            font-size: 0.875rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-new { background-color: #dbeafe; color: #1e40af; } /* Blue */
+        .status-contacted { background-color: #fef3c7; color: #92400e; } /* Amber */
+        .status-closed { background-color: #dcfce7; color: #166534; } /* Green */
+
+        /* Mobile Specifics */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            cursor: pointer;
+            margin-right: 1rem;
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 150;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                height: 100vh;
+                top: 0;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: var(--spacing-md);
+            }
+            
+            /* Adjust header for mobile */
+            .navbar {
+                justify-content: flex-start;
+            }
+            
+            .logo {
+                flex-grow: 1;
+            }
+            
+            /* Hide user info on small mobile */
+            .user-info {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container navbar">
+            <button id="mobile-menu-btn" class="mobile-menu-btn">☰</button>
+            <a href="/" class="logo">Smart Investor <span style="font-weight: 400; font-size: 0.8em; color: var(--color-text-muted);">Partner</span></a>
+            <div class="user-info" style="display: flex; align-items: center; gap: 1rem;">
+                <span style="font-size: 0.875rem; color: var(--color-text-muted);">Welcome, Agent Sarah</span>
+                <a href="#" class="btn btn-accent" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">Logout</a>
+            </div>
+            <!-- Mobile logout shown only if needed, or keeping it simple -->
+        </div>
+    </header>
+
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <div id="sidebar" class="sidebar">
+        <!-- Added close button for mobile inside sidebar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; @media(min-width: 769px) { display: none; }">
+             <span style="font-weight: bold; color: var(--color-primary);">Menu</span>
+             <button id="close-sidebar-btn" style="background:none; border:none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+        </div>
+
+        <nav>
+            <a href="#" class="nav-item active">Dashboard</a>
+            <a href="#" class="nav-item">My Leads</a>
+            <a href="#" class="nav-item">Listings</a>
+            <a href="#" class="nav-item">Settings</a>
+            <a href="/" class="nav-item" style="color: var(--color-accent); margin-top: auto;">Back to Site</a>
+        </nav>
+    </div>
+
+    <main class="main-content">
+        <h1 class="section-title" style="margin-bottom: 1.5rem;">Partner Dashboard</h1>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Leads</div>
+                <div class="stat-value" id="total-leads">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">New Enquiries</div>
+                <div class="stat-value" id="new-leads">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Conversion Rate</div>
+                <div class="stat-value">12.5%</div>
+            </div>
+        </div>
+
+        <!-- Leads Table -->
+        <h2 style="font-size: 1.25rem; color: var(--color-primary); margin-bottom: 1rem;">Recent Leads</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Project</th>
+                        <th>Customer</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="leads-table-body">
+                    <!-- Injected by partner.js -->
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <script type="module" src="partner.js"></script>
+    <script>
+        // Inline script for mobile menu toggling
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-sidebar-btn');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            function toggleMenu() {
+                sidebar.classList.toggle('active');
+                overlay.classList.toggle('active');
+            }
+
+            if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
+            if(closeBtn) closeBtn.addEventListener('click', toggleMenu);
+            if(overlay) overlay.addEventListener('click', toggleMenu);
+        });
+    </script>
+
+</html>
