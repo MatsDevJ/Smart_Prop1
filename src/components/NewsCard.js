@@ -31,6 +31,7 @@ class NewsCard extends HTMLElement {
         :host {
           display: block;
           font-family: var(--font-family-sans, system-ui);
+          cursor: pointer;
         }
         .card {
           background: white;

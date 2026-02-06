@@ -6,7 +6,7 @@ export const newsItems = [
     date: "2026-02-01",
     imageUrl: "https://placehold.co/600x400/0f172a/ffffff?text=URA+Master+Plan",
     snippet: "New rejuvenation plans for the East Coast area include more green spaces and improved connectivity.",
-    url: "https://www.ura.gov.sg" // Mock external link
+    url: "https://www.ura.gov.sg"
   },
   {
     id: "n2",
@@ -24,7 +24,7 @@ export const newsItems = [
     date: "2026-02-05",
     imageUrl: "https://placehold.co/600x400/d4af37/000000?text=Jurong+Launch",
     snippet: "City Developments Ltd unveils plans for a 500-unit project near Jurong Lake District.",
-    url: "#"
+    url: "https://www.cdl.com.sg" // Updated with a real-ish URL
   },
   {
     id: "n4",
@@ -33,6 +33,6 @@ export const newsItems = [
     date: "2026-02-03",
     imageUrl: "https://placehold.co/600x400/64748b/ffffff?text=Investment+Tips",
     snippet: "Expert analysis on how to identify growth potential in the cooling market.",
-    url: "#"
+    url: "https://www.propnext.com" // Updated with a real-ish URL
   }
 ];
