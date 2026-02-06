@@ -1,5 +1,7 @@
 import './src/components/ProjectCard.js';
+import './src/components/NewsCard.js';
 import { projects } from './src/data/mockData.js';
+import { newsItems } from './src/data/newsData.js';
 
 // Initialize Firebase (Placeholder)
 const firebaseConfig = {
@@ -12,6 +14,7 @@ const firebaseConfig = {
 // Initialize app logic when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   renderFeaturedProjects();
+  renderNews();
 });
 
 function renderFeaturedProjects() {
@@ -29,6 +32,25 @@ function renderFeaturedProjects() {
     card.setAttribute('district', project.district);
     card.setAttribute('badge', project.badge);
     
+    container.appendChild(card);
+  });
+}
+
+function renderNews() {
+  const container = document.getElementById('news-list');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  newsItems.forEach(news => {
+    const card = document.createElement('news-card');
+    card.setAttribute('title', news.title);
+    card.setAttribute('source', news.source);
+    card.setAttribute('date', news.date);
+    card.setAttribute('image', news.imageUrl);
+    card.setAttribute('snippet', news.snippet);
+    card.setAttribute('url', news.url);
+
     container.appendChild(card);
   });
 }

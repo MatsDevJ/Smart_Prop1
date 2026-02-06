@@ -196,3 +196,32 @@ header {
 .nearby-list li:last-child {
   border-bottom: none;
 }
+
+/* News Section Styles (Horizontal Scroller) */
+.news-scroller {
+  display: flex;
+  gap: var(--spacing-md);
+  overflow-x: auto;
+  padding-bottom: var(--spacing-md);
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.news-scroller::-webkit-scrollbar {
+  height: 8px;
+}
+
+.news-scroller::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+.news-scroller::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.news-scroller news-card {
+  min-width: 260px;
+  width: 260px;
+  scroll-snap-align: start;
+}
