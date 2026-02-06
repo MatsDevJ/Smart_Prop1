@@ -265,20 +265,28 @@
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
                 
-                <!-- Traffic & Engagement -->
-                <div class="stat-card">
-                    <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Platform Engagement</h3>
-                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: 1rem;">
-                        <span style="color: var(--color-text-muted);">Monthly Traffic</span>
-                        <strong style="color: var(--color-primary);">45.2K Visits</strong>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: 1rem;">
-                        <span style="color: var(--color-text-muted);">Avg. Dwell Time</span>
-                        <strong style="color: var(--color-primary);">4m 12s</strong>
-                    </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <span style="color: var(--color-text-muted);">Click-Through Rate</span>
-                        <strong style="color: var(--color-accent);">3.8%</strong>
+                <!-- Traffic & Engagement (Detailed) -->
+                <div class="stat-card" style="grid-column: 1 / -1;">
+                    <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Customer Interest by Project</h3>
+                    <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">
+                        Real-time view counts and traffic trends for your active listings.
+                    </p>
+                    
+                    <div class="table-container" style="border: none; box-shadow: none;">
+                        <table style="min-width: 100%;">
+                            <thead>
+                                <tr style="background: white; border-bottom: 2px solid var(--color-border);">
+                                    <th style="padding-left: 0;">Project Name</th>
+                                    <th>Total Views</th>
+                                    <th>Unique Visitors</th>
+                                    <th>Monthly Trend</th>
+                                    <th style="text-align: right;">Interest Level</th>
+                                </tr>
+                            </thead>
+                            <tbody id="traffic-stats-body">
+                                <!-- Injected by partner.js -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 

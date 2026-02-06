@@ -40,3 +40,46 @@ export const leads = [
     date: "2026-01-28"
   }
 ];
+
+export const projectTraffic = [
+  {
+    id: "p1",
+    name: "Emerald of Katong",
+    views: 12540,
+    uniqueVisitors: 8900,
+    trend: "+12%",
+    trendDirection: "up"
+  },
+  {
+    id: "p2",
+    name: "Chuan Park",
+    views: 9800,
+    uniqueVisitors: 6500,
+    trend: "+5%",
+    trendDirection: "up"
+  },
+  {
+    id: "p4",
+    name: "Union Square Residences",
+    views: 8200,
+    uniqueVisitors: 6100,
+    trend: "-2%",
+    trendDirection: "down"
+  },
+  {
+    id: "p3",
+    name: "Parktown Residence",
+    views: 5400,
+    uniqueVisitors: 3200,
+    trend: "+24%",
+    trendDirection: "up"
+  },
+  {
+    id: "p5",
+    name: "Novo Place",
+    views: 3100,
+    uniqueVisitors: 1800,
+    trend: "0%",
+    trendDirection: "neutral"
+  }
+];

@@ -1,4 +1,4 @@
-import { leads } from './src/data/mockLeads.js';
+import { leads, projectTraffic } from './src/data/mockLeads.js';
 
 window.switchTab = function(tabName) {
     // Hide all tabs
@@ -21,7 +21,43 @@ window.switchTab = function(tabName) {
 document.addEventListener('DOMContentLoaded', () => {
     renderStats();
     renderLeadsTable();
+    renderTrafficStats();
 });
+
+function renderTrafficStats() {
+    const tbody = document.getElementById('traffic-stats-body');
+    if (!tbody) return;
+    
+    tbody.innerHTML = '';
+    
+    // Find max views for relative progress bar
+    const maxViews = Math.max(...projectTraffic.map(p => p.views));
+
+    projectTraffic.forEach(p => {
+        const tr = document.createElement('tr');
+        
+        let trendColor = '#64748b'; // grey
+        if (p.trendDirection === 'up') trendColor = '#166534'; // green
+        if (p.trendDirection === 'down') trendColor = '#b91c1c'; // red
+
+        const percentage = Math.round((p.views / maxViews) * 100);
+
+        tr.innerHTML = `
+            <td style="padding-left: 0; font-weight: 600; color: var(--color-primary);">${p.name}</td>
+            <td>${p.views.toLocaleString()}</td>
+            <td>${p.uniqueVisitors.toLocaleString()}</td>
+            <td style="color: ${trendColor}; font-weight: 600;">${p.trend}</td>
+            <td style="text-align: right; vertical-align: middle;">
+                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 10px;">
+                    <div style="width: 100px; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden;">
+                        <div style="width: ${percentage}%; height: 100%; background: var(--color-accent);"></div>
+                    </div>
+                </div>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
 
 function renderStats() {
     const totalLeads = leads.length;
