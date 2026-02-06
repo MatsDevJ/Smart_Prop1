@@ -16,7 +16,8 @@ export const projects = [
       { year: '2024', price: 2250 },
       { year: '2025', price: 2380 },
       { year: '2026', price: 2450 }
-    ]
+    ],
+    sentiment: "88%" // Mock initial sentiment
   },
   {
     id: "p2",
@@ -35,7 +36,8 @@ export const projects = [
       { year: '2024', price: 2050 },
       { year: '2025', price: 2150 },
       { year: '2026', price: 2200 }
-    ]
+    ],
+    sentiment: "92%"
   },
   {
     id: "p3",
@@ -54,7 +56,8 @@ export const projects = [
       { year: '2024', price: 1780 },
       { year: '2025', price: 1890 },
       { year: '2026', price: 1950 }
-    ]
+    ],
+    sentiment: "95%"
   },
   {
     id: "p4",
@@ -73,7 +76,8 @@ export const projects = [
       { year: '2024', price: 2950 },
       { year: '2025', price: 3050 },
       { year: '2026', price: 3100 }
-    ]
+    ],
+    sentiment: "53%"
   },
   {
     id: "p5",
@@ -92,6 +96,7 @@ export const projects = [
       { year: '2024', price: 1320 },
       { year: '2025', price: 1380 },
       { year: '2026', price: 1400 }
-    ]
+    ],
+    sentiment: "60%"
   }
 ];

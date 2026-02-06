@@ -31,6 +31,7 @@ function renderFeaturedProjects() {
     card.setAttribute('image', project.imageUrl);
     card.setAttribute('district', project.district);
     card.setAttribute('badge', project.badge);
+    card.setAttribute('sentiment', project.sentiment);
     
     container.appendChild(card);
   });

@@ -5,7 +5,7 @@ class ProjectCard extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['id', 'name', 'developer', 'image', 'district', 'badge'];
+    return ['id', 'name', 'developer', 'image', 'district', 'badge', 'sentiment'];
   }
 
   connectedCallback() {
@@ -25,6 +25,7 @@ class ProjectCard extends HTMLElement {
     const image = this.getAttribute('image') || '';
     const district = this.getAttribute('district') || '';
     const badge = this.getAttribute('badge') || '';
+    const sentiment = this.getAttribute('sentiment') || 'N/A';
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -102,6 +103,18 @@ class ProjectCard extends HTMLElement {
           margin-top: auto;
           margin-bottom: 0.5rem;
         }
+        .sentiment-result {
+            display: none;
+            margin-top: auto;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--color-primary);
+            font-weight: 600;
+            background: var(--color-background);
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
         .btn-vote {
           flex: 1;
           padding: 0.25rem;
@@ -120,17 +133,6 @@ class ProjectCard extends HTMLElement {
         .btn-vote:hover {
           background-color: var(--color-background, #f1f5f9);
           border-color: var(--color-secondary, #334155);
-        }
-        .btn-vote.active {
-          background-color: #f0fdf4; /* Light green for active good */
-          border-color: #166534;
-          color: #166534;
-          font-weight: 600;
-        }
-        .btn-vote.vote-bad.active {
-           background-color: #fef2f2; /* Light red for active bad */
-           border-color: #b91c1c;
-           color: #b91c1c;
         }
         .actions {
           padding-top: 0.5rem;
@@ -163,12 +165,12 @@ class ProjectCard extends HTMLElement {
           <h3 class="name">${name}</h3>
           
           <div class="sentiment-vote">
-            <button class="btn-vote vote-good" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.remove('active')">
-              👍 Good Buy
-            </button>
-            <button class="btn-vote vote-bad" onclick="this.classList.toggle('active'); this.previousElementSibling.classList.remove('active')">
-              👎 Not So Good
-            </button>
+            <button class="btn-vote vote-good">👍 Good Buy</button>
+            <button class="btn-vote vote-bad">👎 Not So Good</button>
+          </div>
+
+          <div class="sentiment-result">
+             <!-- Result injected here -->
           </div>
 
           <div class="actions">
@@ -177,6 +179,24 @@ class ProjectCard extends HTMLElement {
         </div>
       </div>
     `;
+
+    // Add event listeners locally to access 'this' and shadowRoot
+    const voteSection = this.shadowRoot.querySelector('.sentiment-vote');
+    const resultSection = this.shadowRoot.querySelector('.sentiment-result');
+    const goodBtn = this.shadowRoot.querySelector('.vote-good');
+    const badBtn = this.shadowRoot.querySelector('.vote-bad');
+
+    if(goodBtn) goodBtn.addEventListener('click', () => {
+        voteSection.style.display = 'none';
+        resultSection.style.display = 'block';
+        resultSection.innerHTML = `👍 <span style="color:#166534">${sentiment}</span> of buyers say Good Buy`;
+    });
+
+    if(badBtn) badBtn.addEventListener('click', () => {
+        voteSection.style.display = 'none';
+        resultSection.style.display = 'block';
+        resultSection.innerHTML = `Thanks for your feedback!`;
+    });
   }
 }
 
