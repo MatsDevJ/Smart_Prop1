@@ -48,7 +48,8 @@ export const projectTraffic = [
     views: 12540,
     uniqueVisitors: 8900,
     trend: "+12%",
-    trendDirection: "up"
+    trendDirection: "up",
+    votes: { good: 850, bad: 120 }
   },
   {
     id: "p2",
@@ -56,7 +57,8 @@ export const projectTraffic = [
     views: 9800,
     uniqueVisitors: 6500,
     trend: "+5%",
-    trendDirection: "up"
+    trendDirection: "up",
+    votes: { good: 620, bad: 80 }
   },
   {
     id: "p4",
@@ -64,7 +66,8 @@ export const projectTraffic = [
     views: 8200,
     uniqueVisitors: 6100,
     trend: "-2%",
-    trendDirection: "down"
+    trendDirection: "down",
+    votes: { good: 400, bad: 350 }
   },
   {
     id: "p3",
@@ -72,7 +75,8 @@ export const projectTraffic = [
     views: 5400,
     uniqueVisitors: 3200,
     trend: "+24%",
-    trendDirection: "up"
+    trendDirection: "up",
+    votes: { good: 200, bad: 15 }
   },
   {
     id: "p5",
@@ -80,6 +84,7 @@ export const projectTraffic = [
     views: 3100,
     uniqueVisitors: 1800,
     trend: "0%",
-    trendDirection: "neutral"
+    trendDirection: "neutral",
+    votes: { good: 150, bad: 100 }
   }
 ];

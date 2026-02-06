@@ -96,9 +96,44 @@ class ProjectCard extends HTMLElement {
           color: var(--color-text-main, #1e293b);
           margin-bottom: 0.5rem;
         }
-        .actions {
+        .sentiment-vote {
+          display: flex;
+          gap: 0.5rem;
           margin-top: auto;
-          padding-top: 1rem;
+          margin-bottom: 0.5rem;
+        }
+        .btn-vote {
+          flex: 1;
+          padding: 0.25rem;
+          font-size: 0.75rem;
+          background: transparent;
+          border: 1px solid var(--color-border, #e2e8f0);
+          border-radius: 4px;
+          cursor: pointer;
+          color: var(--color-text-muted, #64748b);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 4px;
+          transition: all 0.2s;
+        }
+        .btn-vote:hover {
+          background-color: var(--color-background, #f1f5f9);
+          border-color: var(--color-secondary, #334155);
+        }
+        .btn-vote.active {
+          background-color: #f0fdf4; /* Light green for active good */
+          border-color: #166534;
+          color: #166534;
+          font-weight: 600;
+        }
+        .btn-vote.vote-bad.active {
+           background-color: #fef2f2; /* Light red for active bad */
+           border-color: #b91c1c;
+           color: #b91c1c;
+        }
+        .actions {
+          padding-top: 0.5rem;
         }
         .btn {
           display: block;
@@ -126,6 +161,16 @@ class ProjectCard extends HTMLElement {
         <div class="content">
           <div class="developer">${developer}</div>
           <h3 class="name">${name}</h3>
+          
+          <div class="sentiment-vote">
+            <button class="btn-vote vote-good" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.remove('active')">
+              👍 Good Buy
+            </button>
+            <button class="btn-vote vote-bad" onclick="this.classList.toggle('active'); this.previousElementSibling.classList.remove('active')">
+              👎 Not So Good
+            </button>
+          </div>
+
           <div class="actions">
             <a href="project-details.html?id=${id}" class="btn">View Details</a>
           </div>
