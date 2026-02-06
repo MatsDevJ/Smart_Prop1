@@ -1,5 +1,23 @@
 import { leads } from './src/data/mockLeads.js';
 
+window.switchTab = function(tabName) {
+    // Hide all tabs
+    document.getElementById('tab-dashboard').style.display = 'none';
+    document.getElementById('tab-insights').style.display = 'none';
+
+    // Show selected tab
+    document.getElementById(`tab-${tabName}`).style.display = 'block';
+
+    // Update Nav Active State (Simple text match for MVP)
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.textContent.toLowerCase().includes(tabName) || (tabName === 'dashboard' && item.textContent === 'Dashboard')) {
+            item.classList.add('active');
+        }
+    });
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     renderStats();
     renderLeadsTable();
