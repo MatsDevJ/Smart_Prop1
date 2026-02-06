@@ -11,19 +11,23 @@
 - **Backend:** Firebase (Firestore, Authentication, Hosting) - *Mocked initially*
 
 ## Data Models (Firestore Schema Design)
-- **projects:** `id`, `name`, `developer`, `launchDate`, `location`, `district`, `recentTransactions`, `nearbyProjects`, `images`
+- **projects:** `id`, `name`, `developer`, `launchDate`, `location`, `district`, `recentTransactions`, `nearbyProjects`, `images`, `tenure`, `medianPsf`, `floorPlanUrl`
 - **partners:** `id`, `type` (Agent, Developer, etc.), `name`, `contactDetails`, `rating`
 - **ads:** `id`, `type`, `content`, `placement`
 
-## Current Plan: Initialization & Home Page MVP
-1.  **Project Initialization:**
-    -   Establish folder structure for components and modules.
-    -   Define global styles (CSS variables for "Trustworthy blues", typography).
-2.  **Component Development:**
-    -   Create `ProjectCard` Web Component (`<project-card>`) to display project details (Image, Name, Developer, Launch Badge).
-3.  **Home Page Implementation:**
-    -   Scaffold the Hero Section with search placeholders.
-    -   Implement "Featured Developments" section.
-    -   Render a list of 5 mock Singapore new launches (e.g., "Emerald of Katong", "Chuan Park").
-4.  **Firebase Config:**
-    -   Set up the initial Firebase configuration placeholder in `main.js`.
+## Current Plan: Lead Gen Forms
+1.  **Component Creation:**
+    -   Create `<lead-gen-modal>`: A reusable modal form component.
+        -   Attributes: `open` (boolean), `type` (Agent/Mortgage/Interior), `project-name`.
+        -   Fields: Name, Email, Phone, + optional fields based on type.
+        -   Action: Simulate form submission (alert for MVP).
+2.  **Integration (Project Details Page):**
+    -   **Agent Lead Gen:** Convert "Download Floor Plan" button to trigger `<lead-gen-modal type="Agent">`.
+    -   **Mortgage Lead Gen:** Add "Mortgage Estimator" card with a basic input UI (Price, Interest) and a "Get Bank Rates" button triggering `<lead-gen-modal type="Mortgage">`.
+    -   **Interior Design Lead Gen:** Add "Interior Inspiration" card with a "View ID Proposals" button triggering `<lead-gen-modal type="Interior">`.
+
+## Features Implemented
+- [x] Home Page (Hero, Featured List)
+- [x] Project Card Component
+- [x] Project Details Page (Core info, Nearby list)
+- [x] Lead Gen Forms (Agent, Mortgage, Interior modals)

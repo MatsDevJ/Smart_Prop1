@@ -5,7 +5,7 @@ class ProjectCard extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['name', 'developer', 'image', 'district', 'badge'];
+    return ['id', 'name', 'developer', 'image', 'district', 'badge'];
   }
 
   connectedCallback() {
@@ -19,6 +19,7 @@ class ProjectCard extends HTMLElement {
   }
 
   render() {
+    const id = this.getAttribute('id') || '#';
     const name = this.getAttribute('name') || 'Project Name';
     const developer = this.getAttribute('developer') || 'Developer';
     const image = this.getAttribute('image') || '';
@@ -126,7 +127,7 @@ class ProjectCard extends HTMLElement {
           <div class="developer">${developer}</div>
           <h3 class="name">${name}</h3>
           <div class="actions">
-            <a href="#" class="btn">View Details</a>
+            <a href="project-details.html?id=${id}" class="btn">View Details</a>
           </div>
         </div>
       </div>

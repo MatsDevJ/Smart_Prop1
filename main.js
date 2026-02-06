@@ -22,6 +22,7 @@ function renderFeaturedProjects() {
 
   projects.forEach(project => {
     const card = document.createElement('project-card');
+    card.setAttribute('id', project.id);
     card.setAttribute('name', project.name);
     card.setAttribute('developer', project.developer);
     card.setAttribute('image', project.imageUrl);
