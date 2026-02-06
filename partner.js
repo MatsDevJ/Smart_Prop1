@@ -4,15 +4,23 @@ window.switchTab = function(tabName) {
     // Hide all tabs
     document.getElementById('tab-dashboard').style.display = 'none';
     document.getElementById('tab-insights').style.display = 'none';
+    document.getElementById('tab-leads').style.display = 'none';
+    document.getElementById('tab-listings').style.display = 'none';
 
     // Show selected tab
     document.getElementById(`tab-${tabName}`).style.display = 'block';
 
-    // Update Nav Active State (Simple text match for MVP)
+    // Update Nav Active State
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
         item.classList.remove('active');
-        if (item.textContent.toLowerCase().includes(tabName) || (tabName === 'dashboard' && item.textContent === 'Dashboard')) {
+        const text = item.textContent.toLowerCase();
+        // Simple matching logic
+        if (text.includes(tabName) || 
+           (tabName === 'dashboard' && text === 'dashboard') ||
+           (tabName === 'leads' && text.includes('leads')) ||
+           (tabName === 'listings' && text.includes('listings')) ||
+           (tabName === 'insights' && text.includes('insights'))) {
             item.classList.add('active');
         }
     });

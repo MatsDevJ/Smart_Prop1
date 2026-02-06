@@ -211,7 +211,7 @@
             <a href="#" class="nav-item active" onclick="switchTab('dashboard')">Dashboard</a>
             <a href="#" class="nav-item" onclick="switchTab('leads')">My Leads</a>
             <a href="#" class="nav-item" onclick="switchTab('insights')">Insights & Value</a>
-            <a href="#" class="nav-item">Listings</a>
+            <a href="#" class="nav-item" onclick="switchTab('listings')">Listings</a>
             <a href="#" class="nav-item">Settings</a>
             <a href="/" class="nav-item" style="color: var(--color-accent); margin-top: auto;">Back to Site</a>
         </nav>
@@ -221,8 +221,6 @@
         <!-- Dashboard Tab -->
         <div id="tab-dashboard">
             <h1 class="section-title" style="margin-bottom: 1.5rem;">Partner Dashboard</h1>
-
-            <!-- Stats -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-label">Total Leads</div>
@@ -237,9 +235,12 @@
                     <div class="stat-value">12.5%</div>
                 </div>
             </div>
+            <p style="color: var(--color-text-muted);">Select "My Leads" or "Insights & Value" from the sidebar for detailed views.</p>
+        </div>
 
-            <!-- Leads Table -->
-            <h2 style="font-size: 1.25rem; color: var(--color-primary); margin-bottom: 1rem;">Recent Leads</h2>
+        <!-- My Leads Tab -->
+        <div id="tab-leads" style="display: none;">
+            <h1 class="section-title" style="margin-bottom: 1.5rem;">My Leads</h1>
             <div class="table-container">
                 <table>
                     <thead>
@@ -341,16 +342,31 @@
 
             </div>
 
-            <!-- Subscription CTA -->
-            <div style="background: var(--color-primary); color: white; padding: 3rem; border-radius: 12px; text-align: center;">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Unlock Premium Insights</h2>
-                <p style="font-size: 1.1rem; color: #cbd5e1; max-width: 600px; margin: 0 auto 2rem;">
-                    Gain access to real-time buyer intent data, advanced demographic filtering, and priority lead routing.
-                </p>
-                <button class="btn btn-accent" style="padding: 1rem 3rem; font-size: 1.25rem;">Subscribe Now - $49/mo</button>
-                <p style="margin-top: 1rem; font-size: 0.875rem; color: #94a3b8;">7-day free trial available. Cancel anytime.</p>
-            </div>
+        </div>
 
+        <!-- Listings Tab -->
+        <div id="tab-listings" style="display: none;">
+            <h1 class="section-title" style="margin-bottom: 1.5rem;">My Listings</h1>
+            <div style="background: white; padding: 2rem; border-radius: 8px; border: 1px solid var(--color-border); text-align: center;">
+                <h3 style="margin-bottom: 1rem;">Active Project Assignments</h3>
+                <p style="color: var(--color-text-muted); margin-bottom: 2rem;">You are currently assigned to the following new launches.</p>
+                <div style="display: grid; gap: 1rem; text-align: left;">
+                    <div style="padding: 1rem; border: 1px solid var(--color-border); border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <strong>Emerald of Katong</strong>
+                            <div style="font-size: 0.875rem; color: var(--color-text-muted);">D15 | 99-year Leasehold</div>
+                        </div>
+                        <span class="status-badge status-contacted">Active</span>
+                    </div>
+                    <div style="padding: 1rem; border: 1px solid var(--color-border); border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <strong>Chuan Park</strong>
+                            <div style="font-size: 0.875rem; color: var(--color-text-muted);">D19 | 99-year Leasehold</div>
+                        </div>
+                        <span class="status-badge status-contacted">Active</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </main>
