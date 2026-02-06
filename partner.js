@@ -6,6 +6,7 @@ window.switchTab = function(tabName) {
     document.getElementById('tab-insights').style.display = 'none';
     document.getElementById('tab-leads').style.display = 'none';
     document.getElementById('tab-listings').style.display = 'none';
+    document.getElementById('tab-settings').style.display = 'none';
 
     // Show selected tab
     document.getElementById(`tab-${tabName}`).style.display = 'block';
@@ -20,7 +21,8 @@ window.switchTab = function(tabName) {
            (tabName === 'dashboard' && text === 'dashboard') ||
            (tabName === 'leads' && text.includes('leads')) ||
            (tabName === 'listings' && text.includes('listings')) ||
-           (tabName === 'insights' && text.includes('insights'))) {
+           (tabName === 'insights' && text.includes('insights')) ||
+           (tabName === 'settings' && text.includes('settings'))) {
             item.classList.add('active');
         }
     });

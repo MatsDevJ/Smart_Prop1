@@ -212,7 +212,7 @@
             <a href="#" class="nav-item" onclick="switchTab('leads')">My Leads</a>
             <a href="#" class="nav-item" onclick="switchTab('insights')">Insights & Value</a>
             <a href="#" class="nav-item" onclick="switchTab('listings')">Listings</a>
-            <a href="#" class="nav-item">Settings</a>
+            <a href="#" class="nav-item" onclick="switchTab('settings')">Settings</a>
             <a href="/" class="nav-item" style="color: var(--color-accent); margin-top: auto;">Back to Site</a>
         </nav>
     </div>
@@ -366,6 +366,65 @@
                         <span class="status-badge status-contacted">Active</span>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="tab-settings" style="display: none;">
+            <h1 class="section-title" style="margin-bottom: 1.5rem;">Account Settings</h1>
+            
+            <div style="display: grid; gap: 2rem; max-width: 800px;">
+                
+                <!-- Profile Section -->
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--color-border);">
+                    <h3 style="margin-bottom: 1rem; color: var(--color-primary);">Profile Information</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600;">Full Name</label>
+                            <input type="text" value="Agent Sarah" style="width: 100%; padding: 0.5rem; border: 1px solid var(--color-border); border-radius: 4px;">
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600;">Agency License No.</label>
+                            <input type="text" value="R0123456Z" style="width: 100%; padding: 0.5rem; border: 1px solid var(--color-border); border-radius: 4px;" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600;">Email Address</label>
+                            <input type="email" value="sarah@agency.com" style="width: 100%; padding: 0.5rem; border: 1px solid var(--color-border); border-radius: 4px;">
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 600;">Phone Number</label>
+                            <input type="tel" value="+65 9123 4567" style="width: 100%; padding: 0.5rem; border: 1px solid var(--color-border); border-radius: 4px;">
+                        </div>
+                    </div>
+                    <button class="btn btn-accent" style="margin-top: 1rem;">Save Changes</button>
+                </div>
+
+                <!-- Notifications Section -->
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--color-border);">
+                    <h3 style="margin-bottom: 1rem; color: var(--color-primary);">Notifications</h3>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" checked>
+                            <span>Email me when I get a new lead</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" checked>
+                            <span>SMS notifications for urgent enquiries</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox">
+                            <span>Weekly performance summary</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Danger Zone -->
+                <div style="background: #fff1f2; padding: 1.5rem; border-radius: 8px; border: 1px solid #fecaca;">
+                    <h3 style="margin-bottom: 1rem; color: #991b1b;">Danger Zone</h3>
+                    <p style="font-size: 0.875rem; color: #7f1d1d; margin-bottom: 1rem;">Once you delete your account, there is no going back. Please be certain.</p>
+                    <button class="btn" style="background: #dc2626; color: white; border: none;">Deactivate Account</button>
+                </div>
+
             </div>
         </div>
 
