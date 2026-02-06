@@ -1,14 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Investor | Singapore New Launches 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Singapore Property New Launches 2026. Data-driven assessments for smart investors.">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+
+    <header>
+        <div class="container navbar">
+            <a href="/" class="logo">Smart Investor</a>
+            <nav>
+                <a href="#" class="btn btn-accent">Partner Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Smart Property Investment in 2026</h1>
+                <p>Discover the latest Singapore new launches with data-driven price assessments.</p>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search by Project, District, or Developer...">
+                    <button class="btn btn-accent">Search</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Developments -->
+        <section class="container">
+            <h2 class="section-title">Featured New Launches</h2>
+            <div id="featured-projects-list" class="project-grid">
+                <!-- Project Cards will be injected here via main.js -->
+            </div>
+        </section>
+
+        <!-- Ad Placeholder -->
+        <section class="container" style="margin-bottom: 2rem; text-align: center;">
+            <div style="background: #e2e8f0; padding: 2rem; border-radius: 8px; color: #64748b;">
+                Google AdSense Banner Placeholder
+            </div>
+        </section>
+
+    </main>
+
+    <script type="module" src="main.js"></script>
 </body>
 </html>
